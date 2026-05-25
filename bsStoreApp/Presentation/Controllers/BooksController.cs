@@ -1,5 +1,6 @@
 ﻿using Entities;
 using Entities.DataTranferObjcets;
+using Entities.ResquestFeatures;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
@@ -22,9 +23,9 @@ namespace Presentation.Controllers
             _manager = manager;
         }
         [HttpGet]
-        public async Task<IActionResult> GetAllBooksAsync()
+        public async Task<IActionResult> GetAllBooksAsync([FromQuery] BookPrametrs bookPrametrs)
         {
-                var books =await _manager.BookServices.GetAllBooksAsync(false);
+                var books =await _manager.BookServices.GetAllBooksAsync(bookPrametrs,false);
                 return Ok(books);
           
         }
