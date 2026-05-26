@@ -8,6 +8,7 @@ using Presentation.ActionFilters;
 using Services.Contracts;
 using System;
 using System.Collections.Generic;
+using System.Text.Json;
 
 
 namespace Presentation.Controllers
@@ -25,9 +26,10 @@ namespace Presentation.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllBooksAsync([FromQuery] BookPrametrs bookPrametrs)
         {
-                var books =await _manager.BookServices.GetAllBooksAsync(bookPrametrs,false);
-                return Ok(books);
-          
+                var pagedResult =await _manager.BookServices.GetAllBooksAsync(bookPrametrs,false);
+                Response.Headers.Add("X-Pagination",JsonSerializer.Serialize(pagedResult.MetaDeta));
+
+            return Ok(pagedResult);         
         }
 
         [HttpGet("{id:int}")]

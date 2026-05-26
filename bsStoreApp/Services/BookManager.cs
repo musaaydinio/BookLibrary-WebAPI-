@@ -1,15 +1,16 @@
-﻿using Entities;
+﻿using AutoMapper;
+using Entities;
+using Entities.DataTranferObjcets;
+using Entities.Exceptions;
+using Entities.RequestFeatures;
+using Entities.ResquestFeatures;
+using Repository.Contracts;
 using Services.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Repository.Contracts;
-using Entities.Exceptions;
-using AutoMapper;
-using Entities.DataTranferObjcets;
-using Entities.ResquestFeatures;
 
 namespace Services
 {
@@ -39,10 +40,12 @@ namespace Services
             await _manager.SaveAsync();
         }
 
-        public async Task<IEnumerable<BookDto>> GetAllBooksAsync(BookPrametrs bookPrametrs, bool trackChanges)
+        public async Task<(IEnumerable<BookDto> books, MetaDeta MetaDeta)> GetAllBooksAsync(BookPrametrs bookPrametrs, bool trackChanges)
         {
-           var books= await _manager.Book.GetAllBookAsync(bookPrametrs, trackChanges);
-            return _mapper.Map<IEnumerable<BookDto>>(books);
+           var booksWithMetaData= await _manager.Book.GetAllBookAsync(bookPrametrs, trackChanges);
+            var booksDto= _mapper.Map<IEnumerable<BookDto>>(booksWithMetaData);
+
+            return(booksDto,booksWithMetaData.metaDeta);
         }
 
         public async Task<(BookDtoForUpdate bookDtoForUpdate, Book book)> GetOneBookForPatchAsync(int id, bool trackChanges)

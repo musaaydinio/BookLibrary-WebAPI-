@@ -1,5 +1,6 @@
 ﻿using Entities;
 using Entities.DataTranferObjcets;
+using Entities.RequestFeatures;
 using Entities.ResquestFeatures;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ namespace Services.Contracts
 {
     public interface IBookServices
     {
-        Task<IEnumerable<BookDto>> GetAllBooksAsync(BookPrametrs bookPrametrs, bool trackChanges);
+        Task<(IEnumerable<BookDto> books, MetaDeta MetaDeta)> GetAllBooksAsync(BookPrametrs bookPrametrs, bool trackChanges);
         Task<BookDto> GetOneBookIdAsync(int id,bool trackChanges);
         Task<BookDto> CreateOneBookAsync(BookDtoForInsertion book);
         Task UpdateOneBookAsync(int id, BookDtoForUpdate bookDto, bool trackChanges);

@@ -1,4 +1,5 @@
 ﻿using Entities;
+using Entities.RequestFeatures;
 using Entities.ResquestFeatures;
 using Microsoft.EntityFrameworkCore;
 using Repository.Contracts;
@@ -22,14 +23,16 @@ namespace Repository.EF_Core
 
         public void DeleteOneBook(Book book)=>Delete(book);
 
-        public async Task<IEnumerable<Book>> GetAllBookAsync(BookPrametrs bookPrametrs, bool trackChanges) =>
-            await
-            FindAll(trackChanges).OrderBy(b => b.Id)
-            .Skip((bookPrametrs.PageNumber-1)*bookPrametrs.PageSize)
-            .Take(bookPrametrs.PageSize)
-            .ToListAsync();
+        public async Task<PagedList<Book>> GetAllBookAsync(BookPrametrs bookPrametrs, bool trackChanges)
+        {
+           var books= await
+           FindAll(trackChanges).OrderBy(b => b.Id)
+           .ToListAsync();
 
-
+            return PagedList<Book>.ToPagedList(books,
+                bookPrametrs.PageNumber,bookPrametrs.PageSize);
+        }
+           
         public async Task <Book> GetOneBookByIdAsync(int id, bool trackChanges) =>
             await FindByCondition(b => b.Id.Equals(id), trackChanges)
             .SingleOrDefaultAsync();
