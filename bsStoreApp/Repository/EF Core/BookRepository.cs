@@ -3,6 +3,7 @@ using Entities.RequestFeatures;
 using Entities.ResquestFeatures;
 using Microsoft.EntityFrameworkCore;
 using Repository.Contracts;
+using Repository.EF_Core.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,6 +30,7 @@ namespace Repository.EF_Core
            var books= await
             FindAll(trackChanges)
            .FilterBooks(bookPrametrs.MinPrice,bookPrametrs.MaxPrice)
+           .Search(bookPrametrs.SearchTerm)
            .OrderBy(b => b.Id)
            .ToListAsync();
 
