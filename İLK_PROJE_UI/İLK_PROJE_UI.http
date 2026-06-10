@@ -1,6 +1,0 @@
-@İLK_PROJE_UI_HostAddress = http://localhost:5220
-
-GET {{İLK_PROJE_UI_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
