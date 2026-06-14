@@ -6,6 +6,11 @@
         public uint MaxPrice { get; set; }
         public bool ValidPriceRnage => MaxPrice > MinPrice;
         public String? SearchTerm {  get; set; }
+
+        public BookPrametrs()
+        {
+            OrderBy = "id";
+        }
     }
 }
 

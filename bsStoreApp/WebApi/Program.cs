@@ -35,6 +35,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.ConfigureActionFilter();
 builder.Services.ConfigureCors();
+builder.Services.ConfigureDataSahpper();
 
 var app = builder.Build();
 

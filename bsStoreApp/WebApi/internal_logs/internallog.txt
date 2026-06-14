@@ -136,3 +136,21 @@
 2026-06-01 23:23:15.1559 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Unrecognized value 'wriTo'='logfile' for element 'logger' in section 'rules'
 2026-06-01 23:23:15.1559 Info NLog, Version=6.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 6.1.3.5285. Product version: 6.1.3+7f18a90739535f5ddc71c48e0fa28c59e5ee8969. GlobalAssemblyCache: False
 2026-06-01 23:23:15.1868 Info Configuration initialized: Targets=0, ConfigItems=1, AutoReload=true, FilePath=C:\Users\hp\Desktop\WEB API PROJELER\basics\bsStoreApp\WebApi\nlog.config
+2026-06-05 18:41:17.6697 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Unrecognized element 'targets(Name=LOgfile)' in section 'targets'
+2026-06-05 18:41:17.6790 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Unrecognized value 'wriTo'='logfile' for element 'logger' in section 'rules'
+2026-06-05 18:41:17.6790 Info NLog, Version=6.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 6.1.3.5285. Product version: 6.1.3+7f18a90739535f5ddc71c48e0fa28c59e5ee8969. GlobalAssemblyCache: False
+2026-06-05 18:41:17.7044 Info Configuration initialized: Targets=0, ConfigItems=1, AutoReload=true, FilePath=C:\Users\hp\Desktop\WEB API PROJELER\basics\bsStoreApp\WebApi\nlog.config
+2026-06-05 18:56:19.7047 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Unrecognized element 'targets(Name=LOgfile)' in section 'targets'
+2026-06-05 18:56:19.7047 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Unrecognized value 'wriTo'='logfile' for element 'logger' in section 'rules'
+2026-06-05 18:56:19.7162 Info NLog, Version=6.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 6.1.3.5285. Product version: 6.1.3+7f18a90739535f5ddc71c48e0fa28c59e5ee8969. GlobalAssemblyCache: False
+2026-06-05 18:56:19.7349 Info Configuration initialized: Targets=0, ConfigItems=1, AutoReload=true, FilePath=C:\Users\hp\Desktop\WEB API PROJELER\basics\bsStoreApp\WebApi\nlog.config
+2026-06-10 17:01:20.6988 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Unrecognized element 'targets(Name=LOgfile)' in section 'targets'
+2026-06-10 17:01:20.7093 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Unrecognized value 'wriTo'='logfile' for element 'logger' in section 'rules'
+2026-06-10 17:01:20.7093 Info NLog, Version=6.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 6.1.3.5285. Product version: 6.1.3+7f18a90739535f5ddc71c48e0fa28c59e5ee8969. GlobalAssemblyCache: False
+2026-06-10 17:01:20.7426 Info Configuration initialized: Targets=0, ConfigItems=1, AutoReload=true, FilePath=C:\Users\hp\Desktop\WEB API PROJELER\basics\bsStoreApp\WebApi\nlog.config
+2026-06-10 17:01:57.6360 Info AppDomain Shutting down. LogFactory closing...
+2026-06-10 17:01:57.6360 Info LogFactory has been disposed.
+2026-06-14 05:56:51.6006 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Unrecognized element 'targets(Name=LOgfile)' in section 'targets'
+2026-06-14 05:56:51.6006 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Unrecognized value 'wriTo'='logfile' for element 'logger' in section 'rules'
+2026-06-14 05:56:51.6133 Info NLog, Version=6.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 6.1.3.5285. Product version: 6.1.3+7f18a90739535f5ddc71c48e0fa28c59e5ee8969. GlobalAssemblyCache: False
+2026-06-14 05:56:51.6322 Info Configuration initialized: Targets=0, ConfigItems=1, AutoReload=true, FilePath=C:\Users\hp\Desktop\WEB API PROJELER\basics\bsStoreApp\WebApi\nlog.config

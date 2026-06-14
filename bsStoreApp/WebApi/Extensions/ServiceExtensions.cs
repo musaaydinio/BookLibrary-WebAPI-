@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Entities.DataTranferObjcets;
+using Microsoft.EntityFrameworkCore;
 using Presentation.ActionFilters;
 using Repository.Contracts;
 using Repository.EF_Core;
@@ -35,6 +36,10 @@ namespace WebApi.Extensions
                     .WithExposedHeaders("X-Pagination")
                     );
             });
+        }
+        public static void ConfigureDataSahpper(this IServiceCollection services)
+        {
+            services.AddScoped<IDataShaper<BookDto>, DataShaper<BookDto>>();
         }
     }
 }

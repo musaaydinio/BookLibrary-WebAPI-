@@ -31,7 +31,7 @@ namespace Repository.EF_Core
             FindAll(trackChanges)
            .FilterBooks(bookPrametrs.MinPrice,bookPrametrs.MaxPrice)
            .Search(bookPrametrs.SearchTerm)
-           .OrderBy(b => b.Id)
+           .Sort(bookPrametrs.SearchTerm)
            .ToListAsync();
 
             return PagedList<Book>.ToPagedList(books,
