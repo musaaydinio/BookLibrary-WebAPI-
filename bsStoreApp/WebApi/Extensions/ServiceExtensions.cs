@@ -1,4 +1,6 @@
 ﻿using Entities.DataTranferObjcets;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.EntityFrameworkCore;
 using Presentation.ActionFilters;
 using Repository.Contracts;
@@ -24,6 +26,7 @@ namespace WebApi.Extensions
         {
             services.AddScoped<ValidetionFilterAttribute>();
             services.AddSingleton<LogFilterAttribute>();
+            services.AddScoped<ValidateMediaTypeAttribute>();
         }
         public static void ConfigureCors(this IServiceCollection services)
         {
@@ -40,6 +43,32 @@ namespace WebApi.Extensions
         public static void ConfigureDataSahpper(this IServiceCollection services)
         {
             services.AddScoped<IDataShaper<BookDto>, DataShaper<BookDto>>();
+        }
+        public static void AddCustomMediaTypes(this IServiceCollection services)
+        {
+            services.Configure<MvcOptions>(config =>
+            {
+                
+                var newtonsoftJsonOutputFormatter = config
+                    .OutputFormatters
+                    .OfType<NewtonsoftJsonOutputFormatter>()?.FirstOrDefault();
+
+                if (newtonsoftJsonOutputFormatter != null)
+                {
+                    newtonsoftJsonOutputFormatter.SupportedMediaTypes
+                    .Add("application/vnd.NiMu.hateoas+json");
+                }
+
+                var xmlOutputFormatter = config
+                    .OutputFormatters
+                    .OfType<XmlDataContractSerializerOutputFormatter>()?.FirstOrDefault();
+
+                if (xmlOutputFormatter is not null)
+                {
+                    xmlOutputFormatter.SupportedMediaTypes
+                    .Add("application/vnd.NiMu.hateoas+xml");
+                }
+            });
         }
     }
 }

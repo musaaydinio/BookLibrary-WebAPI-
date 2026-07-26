@@ -13,10 +13,9 @@ namespace Services
     public class ServicesManager : IServiceManager
     {
         private readonly Lazy<IBookServices> _bookServices;
-        public ServicesManager(IRepositoryManager respositoryManager,ILoggerService logger,IMapper mapper,
-            IDataShaper<BookDto> shaper)
+        public ServicesManager(IRepositoryManager respositoryManager, ILoggerService logger, IMapper mapper,IBookLinks links)
         {
-            _bookServices = new Lazy<IBookServices>(() => new BookManager(respositoryManager,logger,mapper,shaper));
+            _bookServices = new Lazy<IBookServices>(() => new BookManager(respositoryManager, logger, mapper,links));
         }
         public IBookServices BookServices => _bookServices.Value;
     }

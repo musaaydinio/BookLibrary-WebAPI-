@@ -1,5 +1,6 @@
 ﻿using Entities;
 using Entities.DataTranferObjcets;
+using Entities.LinkModels;
 using Entities.ResquestFeatures;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.JsonPatch;
@@ -24,12 +25,20 @@ namespace Presentation.Controllers
             _manager = manager;
         }
         [HttpGet]
+        [ServiceFilter(typeof(ValidateMediaTypeAttribute))]
         public async Task<IActionResult> GetAllBooksAsync([FromQuery] BookPrametrs bookPrametrs)
         {
-                var pagedResult =await _manager.BookServices.GetAllBooksAsync(bookPrametrs,false);
-                Response.Headers.Add("X-Pagination",JsonSerializer.Serialize(pagedResult.MetaDeta));
+                var linkParameters=new lLinkParameters()
+                {
+                    BookPrametrs = bookPrametrs,
+                    HttpContext=HttpContext
+                };
+                var result = await _manager.BookServices.GetAllBooksAsync(linkParameters,false);
+                Response.Headers.Add("X-Pagination",JsonSerializer.Serialize(result.MetaDeta));
 
-            return Ok(pagedResult);         
+            return result .linkResponse.Haslinks? 
+                Ok(result.linkResponse.LinkedEntities):
+                Ok(result.linkResponse.ShapedEntities);
         }
 
         [HttpGet("{id:int}")]
