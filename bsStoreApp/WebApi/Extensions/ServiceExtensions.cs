@@ -57,6 +57,9 @@ namespace WebApi.Extensions
                 {
                     newtonsoftJsonOutputFormatter.SupportedMediaTypes
                     .Add("application/vnd.NiMu.hateoas+json");
+
+                    newtonsoftJsonOutputFormatter.SupportedMediaTypes
+                    .Add("aplication/vnd.NiMu.apiroot+json");
                 }
 
                 var xmlOutputFormatter = config
@@ -67,6 +70,9 @@ namespace WebApi.Extensions
                 {
                     xmlOutputFormatter.SupportedMediaTypes
                     .Add("application/vnd.NiMu.hateoas+xml");
+
+                    xmlOutputFormatter.SupportedMediaTypes
+                    .Add("aplication/vnd.NiMu.apiroot+xml");
                 }
             });
         }
