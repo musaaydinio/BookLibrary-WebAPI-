@@ -1,8 +1,10 @@
 ﻿using Entities.DataTranferObjcets;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Formatters;
+using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.EntityFrameworkCore;
 using Presentation.ActionFilters;
+using Presentation.Controllers;
 using Repository.Contracts;
 using Repository.EF_Core;
 using Services;
@@ -74,6 +76,23 @@ namespace WebApi.Extensions
                     xmlOutputFormatter.SupportedMediaTypes
                     .Add("aplication/vnd.NiMu.apiroot+xml");
                 }
+            });
+        }
+
+        public static void ConfigureVersioning(this IServiceCollection services)
+        {
+            services.AddApiVersioning(opt =>
+            {
+                opt.ReportApiVersions = true;
+                opt.AssumeDefaultVersionWhenUnspecified = true;
+                opt.DefaultApiVersion = new ApiVersion(1, 0);
+                opt.ApiVersionReader = new HeaderApiVersionReader("api-version");
+                opt.Conventions.Controller<BooksController>()
+                .HasDeprecatedApiVersion(new ApiVersion(1, 0));
+
+                opt.Conventions.Controller<BooksV2Controller>()
+               .HasDeprecatedApiVersion(new ApiVersion(2, 0));
+
             });
         }
     }

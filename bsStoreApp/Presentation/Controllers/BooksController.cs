@@ -14,6 +14,7 @@ using System.Text.Json;
 
 namespace Presentation.Controllers
 {
+    //[ApiVersion("1.0")]
     [ServiceFilter(typeof(LogFilterAttribute))]
     [ApiController]
     [Route("api/books")]
@@ -28,6 +29,7 @@ namespace Presentation.Controllers
         [HttpHead]
         [HttpGet(Name ="GetAllBooksAsync")]
         [ServiceFilter(typeof(ValidateMediaTypeAttribute))]
+        [ResponseCache(Duration =60)]
         public async Task<IActionResult> GetAllBooksAsync([FromQuery] BookPrametrs bookPrametrs)
         {
                 var linkParameters=new lLinkParameters()

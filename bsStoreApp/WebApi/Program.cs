@@ -24,6 +24,10 @@ builder.Services.AddControllers(config =>
     .AddApplicationPart(typeof(Presentation.AssemblyReference).Assembly)
     .AddNewtonsoftJson();
 
+builder.Services.AddSwaggerGen(c =>
+{
+    c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
+});
 builder.Services.Configure<ApiBehaviorOptions>(options =>
 {
     options.SuppressModelStateInvalidFilter = true;
@@ -32,13 +36,13 @@ builder.Services.ConfigureSqlContext(builder.Configuration);
 builder.Services.ConfigureRepositoryManager();
 builder.Services.ConfigureServiceManager();
 builder.Services.ConfigureLoggerService();
-builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.ConfigureActionFilter();
 builder.Services.ConfigureCors();
 builder.Services.ConfigureDataSahpper();
 builder.Services.AddCustomMediaTypes();
 builder.Services.AddScoped<IBookLinks,BookLinks>();
+builder.Services.ConfigureVersioning();
 
 var app = builder.Build();
 
