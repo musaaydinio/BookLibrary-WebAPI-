@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Repository.EF_Core;
 
@@ -11,9 +12,11 @@ using Repository.EF_Core;
 namespace WebApi.Migrations
 {
     [DbContext(typeof(RepositoriesContex))]
-    partial class RepositoriesContexModelSnapshot : ModelSnapshot
+    [Migration("20260806180109_AddRolesDatabase")]
+    partial class AddRolesDatabase
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -162,19 +165,19 @@ namespace WebApi.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "27e1a7fc-8fdf-4e03-9f51-5f0d7e16b851",
+                            Id = "37b18af1-2ecc-4306-b7d0-064ff2a28687",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "f32a1d13-801f-405c-8ae1-e88cdb1dee59",
+                            Id = "03c78a28-ff0e-4c1c-80f7-d4bbcbaafffa",
                             Name = "Editor",
                             NormalizedName = "EDITOR"
                         },
                         new
                         {
-                            Id = "97272cd4-5369-41f2-b367-55c45df38a82",
+                            Id = "332c5026-015c-46e7-98e5-463fdb267649",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
