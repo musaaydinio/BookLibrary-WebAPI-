@@ -42,10 +42,20 @@ namespace Presentation.Controllers
         {
             if(!await _services.AuthenticationService.ValidateUser(user))
                 return Unauthorized();
-            return Ok(new
-            {
-                Token=await  _services.AuthenticationService.CreateToken()
-            });
+
+          var tokenDto=await _services.AuthenticationService.CreateToken(exp:true);
+
+            return Ok(tokenDto);
+        }
+
+        [HttpPost("refresh")]
+        [ServiceFilter(typeof(ValidetionFilterAttribute))]
+        public async Task<IActionResult> Refresh([FromBody] TokenDto tokenDto)
+        {
+            var tokenDtoToReturn = await _services
+                .AuthenticationService
+                .RefreshToken(tokenDto);
+            return Ok(tokenDtoToReturn);
         }
     }    
 }
