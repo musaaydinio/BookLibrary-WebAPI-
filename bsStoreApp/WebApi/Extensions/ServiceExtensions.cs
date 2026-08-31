@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using Presentation.ActionFilters;
 using Presentation.Controllers;
 using Repository.Contracts;
@@ -22,14 +23,14 @@ namespace WebApi.Extensions
 {
     public static class ServiceExtensions
     {
-        public static void ConfigureSqlContext(this IServiceCollection services, 
-            IConfiguration configuration)=> services.AddDbContext<RepositoriesContex>
+        public static void ConfigureSqlContext(this IServiceCollection services,
+            IConfiguration configuration) => services.AddDbContext<RepositoriesContex>
     (options => options.UseSqlServer(configuration.GetConnectionString("sqlConnection")));
         public static void ConfigureRepositoryManager(this IServiceCollection services) =>
             services.AddScoped<IRepositoryManager, RepositoryManager>();
-        public static void ConfigureServiceManager(this IServiceCollection services )=>
-            services.AddScoped<IServiceManager,ServicesManager>();
-        public static void ConfigureLoggerService(this IServiceCollection services)=>
+        public static void ConfigureServiceManager(this IServiceCollection services) =>
+            services.AddScoped<IServiceManager, ServicesManager>();
+        public static void ConfigureLoggerService(this IServiceCollection services) =>
             services.AddSingleton<ILoggerService, LoggerManager>();
 
         public static void ConfigureActionFilter(this IServiceCollection services)
@@ -58,7 +59,7 @@ namespace WebApi.Extensions
         {
             services.Configure<MvcOptions>(config =>
             {
-                
+
                 var newtonsoftJsonOutputFormatter = config
                     .OutputFormatters
                     .OfType<NewtonsoftJsonOutputFormatter>()?.FirstOrDefault();
@@ -112,9 +113,9 @@ namespace WebApi.Extensions
             services.AddHttpCacheHeaders(exprationopt =>
             {
                 exprationopt.MaxAge = 70;
-                exprationopt.CacheLocation=CacheLocation.Private;
+                exprationopt.CacheLocation = CacheLocation.Private;
             },
-            validationopt=>
+            validationopt =>
             {
                 validationopt.MustRevalidate = false;
             });
@@ -127,7 +128,7 @@ namespace WebApi.Extensions
                 new RateLimitRule()
                 {
                     Endpoint="*",
-                    Limit =3,
+                    Limit =5,
                     Period="1m"
                 }
             };
@@ -136,10 +137,10 @@ namespace WebApi.Extensions
             {
                 opt.GeneralRules = rateLimitRules;
             });
-            services.AddSingleton<IRateLimitCounterStore,MemoryCacheRateLimitCounterStore>();
+            services.AddSingleton<IRateLimitCounterStore, MemoryCacheRateLimitCounterStore>();
             services.AddSingleton<IIpPolicyStore, MemoryCacheIpPolicyStore>();
-            services.AddSingleton<IRateLimitConfiguration,RateLimitConfiguration>();
-            services.AddSingleton<IProcessingStrategy,AsyncKeyLockProcessingStrategy>();
+            services.AddSingleton<IRateLimitConfiguration, RateLimitConfiguration>();
+            services.AddSingleton<IProcessingStrategy, AsyncKeyLockProcessingStrategy>();
         }
 
         public static void ConfigureIdentity(this IServiceCollection services)
@@ -171,27 +172,90 @@ namespace WebApi.Extensions
             })
                 .AddJwtBearer(options =>
                 {
-                     options.TokenValidationParameters = new TokenValidationParameters
-                {
-                    ValidateIssuer = true,
-                    ValidateAudience = true,
-                    ValidateLifetime = true,
-                    ValidateIssuerSigningKey = true,
-                    ValidIssuer = jwtSettings["validIssuer"],
-                    ValidAudience = jwtSettings["validAudience"],
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey))
-                };
-                options.Events = new JwtBearerEvents
-                {
-                    OnChallenge = context =>
+                    options.TokenValidationParameters = new TokenValidationParameters
                     {
-                        context.HandleResponse();
-                        context.Response.StatusCode = StatusCodes.Status401Unauthorized;
-                        context.Response.ContentType = "application/json";
-                        return context.Response.WriteAsync("{\"message\": \"Bu adrese erişmek için geçerli bir Token girmelisiniz.\"}");
+                        ValidateIssuer = true,
+                        ValidateAudience = true,
+                        ValidateLifetime = true,
+                        ValidateIssuerSigningKey = true,
+                        ValidIssuer = jwtSettings["validIssuer"],
+                        ValidAudience = jwtSettings["validAudience"],
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey))
+                    };
+                    options.Events = new JwtBearerEvents
+                    {
+                        OnChallenge = context =>
+                        {
+                            context.HandleResponse();
+                            context.Response.StatusCode = StatusCodes.Status401Unauthorized;
+                            context.Response.ContentType = "application/json";
+                            return context.Response.WriteAsync("{\"message\": \"Bu adrese erişmek için geçerli bir Token girmelisiniz.\"}");
+                        }
+                    };
+                });
+        }
+
+        public static void ConfigureSwagger(this IServiceCollection services)
+        {
+            services.AddSwaggerGen(m =>
+            {
+                m.SwaggerDoc("V1", new OpenApiInfo
+                {
+                    Title = "NiMu",
+                    Version = "V1",
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Musa Aydın",
+                        Email = "mfmy982@gmail.com",
+                        Url = new Uri("https://github.com/musaaydinio")
                     }
-                };
+                });
+                m.SwaggerDoc("V2", new OpenApiInfo { Title = "NiMu", Version = "V2" });
+
+                m.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
+                {
+                    In = ParameterLocation.Header,
+                    Description = "Place to add JWT with Bearer",
+                    Name = "Authorization",
+                    Type = SecuritySchemeType.ApiKey,
+                    Scheme = "Bearer"
+                });
+                m.AddSecurityRequirement(new OpenApiSecurityRequirement()
+                {
+                  {
+                    new OpenApiSecurityScheme
+                    {
+                        Reference= new OpenApiReference
+                        {
+                            Type=ReferenceType.SecurityScheme,
+                            Id="Bearer"
+                        },
+                        Name="Bearer"
+                    },
+                    new List<string>()
+                  }
+                });
             });
+        }
+
+        public static void ResgiterRepositories(this IServiceCollection services)
+        {
+            services.AddScoped<IBookRepository, BookRepository>();
+            services.AddScoped<ICategoryRepositroy, CateagoryRespository>();
+        }
+        public static void ResgiterServices(this IServiceCollection services)
+        {
+            services.AddScoped<IBookServices,BookManager>();
+            services.AddScoped<ICategoryService,CategoryManager>();
+            services.AddScoped<IAuthenticationService, AuthenticationManager>();
+        }
+
+        public static void ConfigureHealthChecks(this IServiceCollection services, IConfiguration configuration)
+        {
+            // Health Check servisini ekliyoruz ve SQL Server veritabanımızı kontrol etmesini söylüyoruz.
+            services.AddHealthChecks()
+                    .AddSqlServer(configuration.GetConnectionString("sqlConnection"));
         }
     }
 }
+    

@@ -18,20 +18,25 @@ namespace Services
 {
     public class BookManager : IBookServices
     {
+        private readonly ICategoryService _categoryService;
         private readonly ILoggerService _logger;
         private readonly IRepositoryManager _manager;
         private readonly IMapper _mapper;
         private readonly IBookLinks _bookLinks;
-        public BookManager(IRepositoryManager manager, ILoggerService logger, IMapper mapper,IBookLinks bookLinks)
+        public BookManager(IRepositoryManager manager, ILoggerService logger, 
+            IMapper mapper,IBookLinks bookLinks,ICategoryService categoryService)
         {
             _manager = manager;
             _logger = logger;
             _mapper = mapper;
-            _bookLinks = bookLinks;           
+            _bookLinks = bookLinks; 
+            _categoryService = categoryService;
         }
         public async Task<BookDto>CreateOneBookAsync(BookDtoForInsertion bookdto)
         {
-            var entity=_mapper.Map<Book>(bookdto);
+            var category = await _categoryService.GetOneCategoryByIdAsync(bookdto.CategoryId, false);
+
+            var entity=_mapper.Map<Book>(bookdto);         
             _manager.Book.CreateOneBook(entity);
            await _manager.SaveAsync();
             return _mapper.Map<BookDto>(entity);
@@ -51,6 +56,12 @@ namespace Services
                     throw new PriceOutofRangeBadRequestException();
 
            var booksWithMetaData= await _manager.Book.GetAllBookAsync(linkParameters.BookPrametrs, trackChanges);
+
+            if (!booksWithMetaData.Any())
+            {
+                throw new BooksNotFoundInPriceRangeException(); // 404 Not Found fırlatır
+            }
+
             var booksDto= _mapper.Map<IEnumerable<BookDto>>(booksWithMetaData);
 
             var links = _bookLinks.TryGenerateLinks(booksDto, linkParameters.BookPrametrs.Fields,
@@ -62,6 +73,11 @@ namespace Services
         {
             var books= _manager.Book.GetAllBookAsync(trackChanges);
             return books;
+        }
+
+        public async Task<IEnumerable<Book>> GetAllBooksWithDetailsAsync(bool trackChanges)
+        {
+            return await _manager.Book.GetAllBooksWithDetails(trackChanges);
         }
 
         public async Task<(BookDtoForUpdate bookDtoForUpdate, Book book)> GetOneBookForPatchAsync(int id, bool trackChanges)
@@ -86,9 +102,11 @@ namespace Services
         public async Task UpdateOneBookAsync(int id, BookDtoForUpdate bookdto, bool trackChanges)
         {
             var entity = await GetOneBookByIdAndCheckExists(id, trackChanges);
-             entity=_mapper.Map<Book>(bookdto);
+
+            _mapper.Map(bookdto, entity);
             _manager.Book.UpdateOneBook(entity);
             await _manager.SaveAsync();
+        
         }
         private async Task<Book> GetOneBookByIdAndCheckExists(int id,bool trackChanges)
         {

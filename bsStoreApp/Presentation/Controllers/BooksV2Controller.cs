@@ -12,6 +12,7 @@ namespace Presentation.Controllers
     //[ApiVersion("2.0",Deprecated =true)]
     [ApiController]
     [Route("api/books")]
+    [ApiExplorerSettings(GroupName ="V2")]
     public class BooksV2Controller : ControllerBase
     {
         private readonly IServiceManager _manager;
@@ -28,7 +29,8 @@ namespace Presentation.Controllers
             var booksV2 = books.Select(b => new BookDto
             {
                 Title=b.Title,
-                Id=b.Id
+                Id=b.Id,
+                Price=b.Price
             }).ToList();
             return Ok(booksV2);
         }

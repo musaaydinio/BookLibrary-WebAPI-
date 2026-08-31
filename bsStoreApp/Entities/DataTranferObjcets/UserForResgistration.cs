@@ -22,6 +22,5 @@ namespace Entities.DataTranferObjcets
 
         public ICollection<string>? Roles { get; set; }
 
-
     }
 }

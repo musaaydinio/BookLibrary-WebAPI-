@@ -4,15 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entities
+namespace Entities.Models
 {
-    public class Book
+    public class Category
     {
-        public int Id { get; set; }
-        public required string Title { get; set; }
-        public decimal Price { get; set; }
-
         public int CategoryId { get; set; }
         public string? CategoryName { get; set; }
+
     }
 }

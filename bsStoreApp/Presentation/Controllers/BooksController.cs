@@ -20,6 +20,7 @@ namespace Presentation.Controllers
     [ServiceFilter(typeof(LogFilterAttribute))]
     [ApiController]
     [Route("api/books")]
+    [ApiExplorerSettings(GroupName = "V1")]
     //[ResponseCache(CacheProfileName ="5mins")]
     //[HttpCacheExpiration(CacheLocation =CacheLocation.Public,MaxAge =80)]
     public class BooksController : ControllerBase
@@ -58,6 +59,17 @@ namespace Presentation.Controllers
                 
                 return Ok(book);   
         }
+
+        [Authorize]
+        [HttpGet("details")]
+        public async Task<IActionResult> GetAllBooksWithDetailsAsync()
+        {
+            return Ok(await _manager
+                .BookServices
+                .GetAllBooksWithDetailsAsync(false));
+        }
+
+
         [ServiceFilter(typeof(ValidetionFilterAttribute))]
         [HttpPost(Name ="CreateOneBookAsync")]
         public async Task<IActionResult> CreateOneBookAsync([FromBody] BookDtoForInsertion bookdto)
@@ -72,7 +84,7 @@ namespace Presentation.Controllers
         public async Task<IActionResult> UpdateOneBookAsync([FromRoute(Name = "id")] int id, [FromBody] BookDtoForUpdate bookdto)
         {
            
-               await _manager.BookServices.UpdateOneBookAsync(id, bookdto, false);
+               await _manager.BookServices.UpdateOneBookAsync(id, bookdto, true);
                 return NoContent();
         }
         [HttpDelete("{id:int}")]
