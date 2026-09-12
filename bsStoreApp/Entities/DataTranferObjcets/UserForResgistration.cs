@@ -9,7 +9,7 @@ using System.Xml.Serialization;
 namespace Entities.DataTranferObjcets
 {
     [XmlRoot("UserForResgistrationDto")]
-    public record UserForResgistrationDto
+    public class UserForResgistrationDto // record yerine class yapıldı
     {
         /// <example>Musa</example>
         [XmlElement("firstName")]
@@ -38,8 +38,9 @@ namespace Entities.DataTranferObjcets
         public string? PhoneNumber { get; set; }
 
         /// <example>User</example>
-        [XmlElement("roles")]
-        public List<string>? Roles { get; set; }
+        [XmlArray("roles")]
+        [XmlArrayItem("string")]
+        public List<string>? Roles { get; set; } // Dizi yapısı Swagger XML formatına tam hizalandı
     }
 }
 
