@@ -15,6 +15,16 @@ builder.Services.AddControllers(config =>
     config.RespectBrowserAcceptHeader = true;
     config.ReturnHttpNotAcceptable = true;
     config.CacheProfiles.Add("5mins", new CacheProfile() { Duration = 300 });
+
+    var jsonFormatter = config.InputFormatters
+        .OfType<Microsoft.AspNetCore.Mvc.Formatters.NewtonsoftJsonInputFormatter>()
+        .FirstOrDefault();
+
+    if (jsonFormatter != null)
+    {
+        config.InputFormatters.Remove(jsonFormatter);
+        config.InputFormatters.Insert(0, jsonFormatter);
+    }
 })
     .AddCustomCsvFormatter()
     .AddXmlDataContractSerializerFormatters()
