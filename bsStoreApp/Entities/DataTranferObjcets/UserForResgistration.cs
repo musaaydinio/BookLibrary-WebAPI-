@@ -8,28 +8,31 @@ using System.Xml.Serialization;
 
 namespace Entities.DataTranferObjcets
 {
+    [XmlRoot("UserForResgistrationDto")]
     public record UserForResgistrationDto
     {
-        
+        [XmlElement("firstName")]
         public string? FirstName { get; set; }
-        
+
+        [XmlElement("lastName")]
         public string? LastName { get; set; }
 
-        
-        [Required(ErrorMessage ="Username is required.")]
+        [Required(ErrorMessage = "Username is required.")]
+        [XmlElement("userName")]
         public string? UserName { get; set; }
 
-        
         [Required(ErrorMessage = "Password is required.")]
+        [XmlElement("password")]
         public string? Password { get; set; }
 
-        
+        [XmlElement("email")]
         public string? Email { get; set; }
-        
-        public string? PhoneNumber { get; set; }
-        /// <example>User</example>
-        public ICollection<string>? Roles { get; set; }
 
+        [XmlElement("phoneNumber")]
+        public string? PhoneNumber { get; set; }
+
+        [XmlElement("roles")]
+        public ICollection<string>? Roles { get; set; }
     }
 }
 
