@@ -10,24 +10,24 @@ namespace Entities.DataTranferObjcets
 {
     public record UserForResgistrationDto
     {
-        [XmlElement("firstName")]
+        
         public string? FirstName { get; set; }
-        [XmlElement("lastName")]
+        
         public string? LastName { get; set; }
 
-        [XmlElement("userName")]
+        
         [Required(ErrorMessage ="Username is required.")]
         public string? UserName { get; set; }
 
-        [XmlElement("password")]
+        
         [Required(ErrorMessage = "Password is required.")]
         public string? Password { get; set; }
 
-        [XmlElement("email")]
+        
         public string? Email { get; set; }
-        [XmlElement("phoneNumber")]
+        
         public string? PhoneNumber { get; set; }
-        [XmlElement("roles")]
+        /// <example>User</example>
         public ICollection<string>? Roles { get; set; }
 
     }
