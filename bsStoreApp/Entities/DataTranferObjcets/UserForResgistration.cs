@@ -4,30 +4,33 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace Entities.DataTranferObjcets
 {
     public record UserForResgistrationDto
     {
-        /// <example>John</example>
+        [XmlElement("firstName")]
         public string? FirstName { get; set; }
-        /// <example>Doe</example>
+        [XmlElement("lastName")]
         public string? LastName { get; set; }
 
-        /// <example>johndoe</example>
+        [XmlElement("userName")]
         [Required(ErrorMessage ="Username is required.")]
         public string? UserName { get; set; }
 
-        /// <example>Password123!</example>
+        [XmlElement("password")]
         [Required(ErrorMessage = "Password is required.")]
         public string? Password { get; set; }
 
-        /// <example>john.doe@example.com</example>
+        [XmlElement("email")]
         public string? Email { get; set; }
-        /// <example>5551234567</example>
+        [XmlElement("phoneNumber")]
         public string? PhoneNumber { get; set; }
-        /// <example>["User"]</example>
+        [XmlElement("roles")]
         public ICollection<string>? Roles { get; set; }
 
     }
 }
+
+
