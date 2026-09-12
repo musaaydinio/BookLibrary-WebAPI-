@@ -14,9 +14,8 @@ namespace WebApi.ContexFactory
                 .Build();
 
             var builder = new DbContextOptionsBuilder<RepositoriesContex>()
-                .UseSqlServer(configuration.GetConnectionString("sqlConnection"),
+                .UseNpgsql(configuration.GetConnectionString("sqlConnection"),
                 prj => prj.MigrationsAssembly("WebApi"));
-                
 
             return new RepositoriesContex(builder.Options);
         }
