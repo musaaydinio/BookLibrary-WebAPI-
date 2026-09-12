@@ -17,6 +17,7 @@ using Repository.Contracts;
 using Repository.EF_Core;
 using Services;
 using Services.Contracts;
+using System.Reflection;
 using System.Text;
 
 namespace WebApi.Extensions
@@ -235,6 +236,21 @@ namespace WebApi.Extensions
                     new List<string>()
                   }
                 });
+
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                if (File.Exists(xmlPath))
+                {
+                    m.IncludeXmlComments(xmlPath);
+                }
+
+                // 2. DTO'ların (UserForResgistrationDto) bulunduğu Entities katmanının XML belgesini bağlar
+                var entitiesXml = $"{typeof(Entities.DataTranferObjcets.UserForResgistrationDto).Assembly.GetName().Name}.xml";
+                var entitiesXmlPath = Path.Combine(AppContext.BaseDirectory, entitiesXml);
+                if (File.Exists(entitiesXmlPath))
+                {
+                    m.IncludeXmlComments(entitiesXmlPath);
+                }
             });
         }
 
