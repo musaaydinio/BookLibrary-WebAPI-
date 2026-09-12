@@ -17,10 +17,11 @@ builder.Services.AddControllers(config =>
     config.CacheProfiles.Add("5mins", new CacheProfile() { Duration = 300 });
   
 })
-    .AddCustomCsvFormatter()    
-    .AddApplicationPart(typeof(Presentation.AssemblyReference).Assembly)
     .AddNewtonsoftJson(op=>
-    op.SerializerSettings.ReferenceLoopHandling=Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+    op.SerializerSettings.ReferenceLoopHandling=Newtonsoft.Json.ReferenceLoopHandling.Ignore)
+    .AddXmlDataContractSerializerFormatters()
+    .AddCustomCsvFormatter()
+    .AddApplicationPart(typeof(Presentation.AssemblyReference).Assembly);
    
 builder.Services.Configure<ApiBehaviorOptions>(options =>
 {
