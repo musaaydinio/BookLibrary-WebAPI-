@@ -1,5 +1,6 @@
 using AspNetCoreRateLimit;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Formatters;
 using NLog;
 using Services;
 using Services.Contracts;
@@ -17,12 +18,27 @@ builder.Services.AddControllers(config =>
     config.CacheProfiles.Add("5mins", new CacheProfile() { Duration = 300 });
   
 })
-    .AddNewtonsoftJson(op=>
-    op.SerializerSettings.ReferenceLoopHandling=Newtonsoft.Json.ReferenceLoopHandling.Ignore)
+    .AddNewtonsoftJson(op =>
+    {
+        op.SerializerSettings.ReferenceLoopHandling =
+            Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+    })
     .AddXmlDataContractSerializerFormatters()
     .AddCustomCsvFormatter()
     .AddApplicationPart(typeof(Presentation.AssemblyReference).Assembly);
-   
+
+builder.Services.Configure<MvcOptions>(options =>
+{
+    var jsonPatchFormatter = options.InputFormatters
+        .OfType<NewtonsoftJsonPatchInputFormatter>()
+        .FirstOrDefault();
+
+    if (jsonPatchFormatter != null)
+    {
+        jsonPatchFormatter.SupportedMediaTypes.Add("application/json");
+    }
+});
+
 builder.Services.Configure<ApiBehaviorOptions>(options =>
 {
     options.SuppressModelStateInvalidFilter = true;

@@ -11,6 +11,8 @@ namespace Presentation.Controllers
 {
     [ApiController]
     [Route("api/files")]
+    [Consumes("application/json", "application/json-patch+json",
+    "application/xml", "text/csv")]
     public class FilesController :ControllerBase
     {
         [HttpPost("upload")]

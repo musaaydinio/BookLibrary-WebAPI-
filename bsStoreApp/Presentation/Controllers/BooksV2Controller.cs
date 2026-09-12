@@ -13,6 +13,8 @@ namespace Presentation.Controllers
     [ApiController]
     [Route("api/books")]
     [ApiExplorerSettings(GroupName ="V2")]
+    [Consumes("application/json", "application/json-patch+json",
+    "application/xml", "text/csv")]
     public class BooksV2Controller : ControllerBase
     {
         private readonly IServiceManager _manager;

@@ -657,3 +657,67 @@
 2026-09-12 21:46:56.2309 Info Registered target NLog.Targets.FileTarget(Name=logfile)
 2026-09-12 21:46:56.2396 Info NLog, Version=6.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 6.1.3.5285. Product version: 6.1.3+7f18a90739535f5ddc71c48e0fa28c59e5ee8969. GlobalAssemblyCache: False
 2026-09-12 21:46:56.2536 Info Configuration initialized: TargetNames=logfile, ConfigItems=12, AutoReload=true, FilePath=C:\Users\hp\Desktop\WEB API PROJELER\basics\bsStoreApp\WebApi\nlog.config
+2026-09-12 22:02:31.7482 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2026-09-12 22:02:31.7568 Info NLog, Version=6.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 6.1.3.5285. Product version: 6.1.3+7f18a90739535f5ddc71c48e0fa28c59e5ee8969. GlobalAssemblyCache: False
+2026-09-12 22:02:31.7696 Info Configuration initialized: TargetNames=logfile, ConfigItems=12, AutoReload=true, FilePath=C:\Users\hp\Desktop\WEB API PROJELER\basics\bsStoreApp\WebApi\nlog.config
+2026-09-12 22:04:38.8261 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2026-09-12 22:04:38.8347 Info NLog, Version=6.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 6.1.3.5285. Product version: 6.1.3+7f18a90739535f5ddc71c48e0fa28c59e5ee8969. GlobalAssemblyCache: False
+2026-09-12 22:04:38.8490 Info Configuration initialized: TargetNames=logfile, ConfigItems=12, AutoReload=true, FilePath=C:\Users\hp\Desktop\WEB API PROJELER\basics\bsStoreApp\WebApi\nlog.config
+2026-09-12 22:07:33.6491 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2026-09-12 22:07:33.6587 Info NLog, Version=6.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 6.1.3.5285. Product version: 6.1.3+7f18a90739535f5ddc71c48e0fa28c59e5ee8969. GlobalAssemblyCache: False
+2026-09-12 22:07:33.6744 Info Configuration initialized: TargetNames=logfile, ConfigItems=12, AutoReload=true, FilePath=C:\Users\hp\Desktop\WEB API PROJELER\basics\bsStoreApp\WebApi\nlog.config
+2026-09-12 22:08:11.3013 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2026-09-12 22:08:11.3013 Info NLog, Version=6.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 6.1.3.5285. Product version: 6.1.3+7f18a90739535f5ddc71c48e0fa28c59e5ee8969. GlobalAssemblyCache: False
+2026-09-12 22:08:11.3233 Info Configuration initialized: TargetNames=logfile, ConfigItems=12, AutoReload=true, FilePath=C:\Users\hp\Desktop\WEB API PROJELER\basics\bsStoreApp\WebApi\nlog.config
+2026-09-12 22:09:12.5393 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2026-09-12 22:09:12.5475 Info NLog, Version=6.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 6.1.3.5285. Product version: 6.1.3+7f18a90739535f5ddc71c48e0fa28c59e5ee8969. GlobalAssemblyCache: False
+2026-09-12 22:09:12.5608 Info Configuration initialized: TargetNames=logfile, ConfigItems=12, AutoReload=true, FilePath=C:\Users\hp\Desktop\WEB API PROJELER\basics\bsStoreApp\WebApi\nlog.config
+2026-09-12 22:09:35.2082 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2026-09-12 22:09:35.2197 Info NLog, Version=6.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 6.1.3.5285. Product version: 6.1.3+7f18a90739535f5ddc71c48e0fa28c59e5ee8969. GlobalAssemblyCache: False
+2026-09-12 22:09:35.2197 Info Configuration initialized: TargetNames=logfile, ConfigItems=12, AutoReload=true, FilePath=C:\Users\hp\Desktop\WEB API PROJELER\basics\bsStoreApp\WebApi\nlog.config
+2026-09-12 22:10:09.4032 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2026-09-12 22:10:09.4117 Info NLog, Version=6.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 6.1.3.5285. Product version: 6.1.3+7f18a90739535f5ddc71c48e0fa28c59e5ee8969. GlobalAssemblyCache: False
+2026-09-12 22:10:09.4252 Info Configuration initialized: TargetNames=logfile, ConfigItems=12, AutoReload=true, FilePath=C:\Users\hp\Desktop\WEB API PROJELER\basics\bsStoreApp\WebApi\nlog.config
+2026-09-12 22:12:19.6711 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2026-09-12 22:12:19.6798 Info NLog, Version=6.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 6.1.3.5285. Product version: 6.1.3+7f18a90739535f5ddc71c48e0fa28c59e5ee8969. GlobalAssemblyCache: False
+2026-09-12 22:12:19.6936 Info Configuration initialized: TargetNames=logfile, ConfigItems=12, AutoReload=true, FilePath=C:\Users\hp\Desktop\WEB API PROJELER\basics\bsStoreApp\WebApi\nlog.config
+2026-09-12 22:16:58.2561 Info AppDomain Shutting down. LogFactory closing...
+2026-09-12 22:16:58.2941 Info LogFactory has been disposed.
+2026-09-12 22:17:05.0262 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2026-09-12 22:17:05.0262 Info NLog, Version=6.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 6.1.3.5285. Product version: 6.1.3+7f18a90739535f5ddc71c48e0fa28c59e5ee8969. GlobalAssemblyCache: False
+2026-09-12 22:17:05.0477 Info Configuration initialized: TargetNames=logfile, ConfigItems=12, AutoReload=true, FilePath=C:\Users\hp\Desktop\WEB API PROJELER\basics\bsStoreApp\WebApi\nlog.config
+2026-09-12 22:17:12.0953 Info AppDomain Shutting down. LogFactory closing...
+2026-09-12 22:17:12.0953 Info LogFactory has been disposed.
+2026-09-12 22:20:58.5895 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2026-09-12 22:20:58.5983 Info NLog, Version=6.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 6.1.3.5285. Product version: 6.1.3+7f18a90739535f5ddc71c48e0fa28c59e5ee8969. GlobalAssemblyCache: False
+2026-09-12 22:20:58.6108 Info Configuration initialized: TargetNames=logfile, ConfigItems=12, AutoReload=true, FilePath=C:\Users\hp\Desktop\WEB API PROJELER\basics\bsStoreApp\WebApi\nlog.config
+2026-09-12 22:21:43.7981 Info AppDomain Shutting down. LogFactory closing...
+2026-09-12 22:21:43.8128 Info LogFactory has been disposed.
+2026-09-12 22:28:02.7588 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2026-09-12 22:28:02.7588 Info NLog, Version=6.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 6.1.3.5285. Product version: 6.1.3+7f18a90739535f5ddc71c48e0fa28c59e5ee8969. GlobalAssemblyCache: False
+2026-09-12 22:28:02.7805 Info Configuration initialized: TargetNames=logfile, ConfigItems=12, AutoReload=true, FilePath=C:\Users\hp\Desktop\WEB API PROJELER\basics\bsStoreApp\WebApi\nlog.config
+2026-09-12 22:31:22.2621 Info AppDomain Shutting down. LogFactory closing...
+2026-09-12 22:31:22.2746 Info LogFactory has been disposed.
+2026-09-12 22:31:51.9791 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2026-09-12 22:31:51.9878 Info NLog, Version=6.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 6.1.3.5285. Product version: 6.1.3+7f18a90739535f5ddc71c48e0fa28c59e5ee8969. GlobalAssemblyCache: False
+2026-09-12 22:31:52.0016 Info Configuration initialized: TargetNames=logfile, ConfigItems=12, AutoReload=true, FilePath=C:\Users\hp\Desktop\WEB API PROJELER\basics\bsStoreApp\WebApi\nlog.config
+2026-09-12 22:31:57.0739 Info AppDomain Shutting down. LogFactory closing...
+2026-09-12 22:31:57.0809 Info LogFactory has been disposed.
+2026-09-12 22:35:38.0368 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2026-09-12 22:35:38.0454 Info NLog, Version=6.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 6.1.3.5285. Product version: 6.1.3+7f18a90739535f5ddc71c48e0fa28c59e5ee8969. GlobalAssemblyCache: False
+2026-09-12 22:35:38.0586 Info Configuration initialized: TargetNames=logfile, ConfigItems=12, AutoReload=true, FilePath=C:\Users\hp\Desktop\WEB API PROJELER\basics\bsStoreApp\WebApi\nlog.config
+2026-09-12 22:36:50.2600 Info AppDomain Shutting down. LogFactory closing...
+2026-09-12 22:36:50.2600 Info LogFactory has been disposed.
+2026-09-12 22:37:22.3625 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2026-09-12 22:37:22.3714 Info NLog, Version=6.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 6.1.3.5285. Product version: 6.1.3+7f18a90739535f5ddc71c48e0fa28c59e5ee8969. GlobalAssemblyCache: False
+2026-09-12 22:37:22.3852 Info Configuration initialized: TargetNames=logfile, ConfigItems=12, AutoReload=true, FilePath=C:\Users\hp\Desktop\WEB API PROJELER\basics\bsStoreApp\WebApi\nlog.config
+2026-09-12 22:37:53.2126 Info AppDomain Shutting down. LogFactory closing...
+2026-09-12 22:37:53.2126 Info LogFactory has been disposed.
+2026-09-12 22:38:33.3966 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2026-09-12 22:38:33.4047 Info NLog, Version=6.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 6.1.3.5285. Product version: 6.1.3+7f18a90739535f5ddc71c48e0fa28c59e5ee8969. GlobalAssemblyCache: False
+2026-09-12 22:38:33.4047 Info Configuration initialized: TargetNames=logfile, ConfigItems=12, AutoReload=true, FilePath=C:\Users\hp\Desktop\WEB API PROJELER\basics\bsStoreApp\WebApi\nlog.config
+2026-09-12 22:40:09.8296 Info AppDomain Shutting down. LogFactory closing...
+2026-09-12 22:40:09.8296 Info LogFactory has been disposed.
+2026-09-12 22:41:25.0819 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2026-09-12 22:41:25.0819 Info NLog, Version=6.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 6.1.3.5285. Product version: 6.1.3+7f18a90739535f5ddc71c48e0fa28c59e5ee8969. GlobalAssemblyCache: False
+2026-09-12 22:41:25.1030 Info Configuration initialized: TargetNames=logfile, ConfigItems=12, AutoReload=true, FilePath=C:\Users\hp\Desktop\WEB API PROJELER\basics\bsStoreApp\WebApi\nlog.config

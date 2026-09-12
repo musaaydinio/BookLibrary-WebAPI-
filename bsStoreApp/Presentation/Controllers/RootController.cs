@@ -12,6 +12,8 @@ namespace Presentation.Controllers
     [ApiController]
     [Route("api")]
     [ApiExplorerSettings(GroupName = "V1")]
+    [Consumes("application/json","application/json-patch+json",
+    "application/xml","text/csv")]
     public class RootController : ControllerBase
     {
         private readonly LinkGenerator _linkGenerator;

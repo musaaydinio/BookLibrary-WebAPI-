@@ -10,6 +10,8 @@ namespace Presentation.Controllers
 {
     [ApiController]
     [Route("api/categories")]
+    [Consumes("application/json", "application/json-patch+json",
+    "application/xml", "text/csv")]
     public class CategoriesController :ControllerBase
     {
         private readonly IServiceManager _services;

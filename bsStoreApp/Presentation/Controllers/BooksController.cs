@@ -21,6 +21,8 @@ namespace Presentation.Controllers
     [ApiController]
     [Route("api/books")]
     [ApiExplorerSettings(GroupName = "V1")]
+    [Consumes("application/json", "application/json-patch+json",
+    "application/xml", "text/csv")]
     //[ResponseCache(CacheProfileName ="5mins")]
     //[HttpCacheExpiration(CacheLocation =CacheLocation.Public,MaxAge =80)]
     public class BooksController : ControllerBase
