@@ -55,16 +55,12 @@ var logger=app.Services.GetRequiredService<ILoggerService>();
 app.ConfigureExceptionHandler(logger);
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+app.UseSwagger();
+app.UseSwaggerUI(s =>
 {
-    app.UseSwagger();
-    app.UseSwaggerUI(s =>
-    {
-        s.SwaggerEndpoint("/swagger/V1/swagger.json", "Nimu V1");
-        s.SwaggerEndpoint("/swagger/V2/swagger.json", "Nimu V2");
-    });
-
-}
+    s.SwaggerEndpoint("/swagger/V1/swagger.json", "Nimu V1");
+    s.SwaggerEndpoint("/swagger/V2/swagger.json", "Nimu V2");
+});
 if (app.Environment.IsProduction())
 {
     app.UseHsts();
