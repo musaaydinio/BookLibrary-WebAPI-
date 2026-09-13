@@ -215,11 +215,12 @@ namespace WebApi.Extensions
 
                 m.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
                 {
-                    In = ParameterLocation.Header,
+                    In = ParameterLocation.Header,                    
                     Description = "Place to add JWT with Bearer",
                     Name = "Authorization",
-                    Type = SecuritySchemeType.ApiKey,
-                    Scheme = "Bearer"
+                    Type = SecuritySchemeType.Http,
+                    Scheme = "bearer",
+                    BearerFormat = "JWT"
                 });
                 m.AddSecurityRequirement(new OpenApiSecurityRequirement()
                 {
